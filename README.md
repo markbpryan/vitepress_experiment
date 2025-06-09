@@ -9,6 +9,8 @@
 
 VitePress is a Vue-powered static site generator and a spiritual successor to [VuePress](https://vuepress.vuejs.org), built on top of [Vite](https://github.com/vitejs/vite).
 
+**test update**
+
 ## Documentation
 
 To check out docs, visit [vitepress.dev](https://vitepress.dev).
