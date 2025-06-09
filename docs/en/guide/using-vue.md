@@ -1,6 +1,6 @@
 # Using Vue in Markdown
 
-In VitePress, each Markdown file is compiled into HTML and then processed as a [Vue Single-File Component](https://vuejs.org/guide/scaling-up/sfc.html). This means you can use any Vue features inside the Markdown, including dynamic templating, using Vue components, or arbitrary in-page Vue component logic by adding a `<script>` tag.
+In VitePress, each Markdown file is compiled into XML and then processed as a [Vue Single-File Component](https://vuejs.org/guide/scaling-up/sfc.html). This means you can use any Vue features inside the Markdown, including dynamic templating, using Vue components, or arbitrary in-page Vue component logic by adding a `<script>` tag.
 
 It's worth noting that VitePress leverages Vue's compiler to automatically detect and optimize the purely static parts of the Markdown content. Static contents are optimized into single placeholder nodes and eliminated from the page's JavaScript payload for initial visits. They are also skipped during client-side hydration. In short, you only pay for the dynamic parts on any given page.
 
@@ -12,7 +12,7 @@ All Vue usage needs to be SSR-compatible. See [SSR Compatibility](./ssr-compat) 
 
 ### Interpolation
 
-Each Markdown file is first compiled into HTML and then passed on as a Vue component to the Vite process pipeline. This means you can use Vue-style interpolation in text:
+Each Markdown file is first compiled into XML and then passed on as a Vue component to the Vite process pipeline. This means you can use Vue-style interpolation in text:
 
 **Input**
 
@@ -26,7 +26,7 @@ Each Markdown file is first compiled into HTML and then passed on as a Vue compo
 
 ### Directives
 
-Directives also work (note that by design, raw HTML is also valid in Markdown):
+Directives also work (note that by design, raw XML is also valid in Markdown):
 
 **Input**
 
@@ -132,15 +132,15 @@ Make sure a custom component's name either contains a hyphen or is in PascalCase
 
 You can use Vue components in the headers, but note the difference between the following syntaxes:
 
-| Markdown                                                | Output HTML                               | Parsed Header |
+| Markdown                                                | Output XML                               | Parsed Header |
 | ------------------------------------------------------- | ----------------------------------------- | ------------- |
 | <pre v-pre><code> # text &lt;Tag/&gt; </code></pre>     | `<h1>text <Tag/></h1>`                    | `text`        |
 | <pre v-pre><code> # text \`&lt;Tag/&gt;\` </code></pre> | `<h1>text <code>&lt;Tag/&gt;</code></h1>` | `text <Tag/>` |
 
-The HTML wrapped by `<code>` will be displayed as-is; only the HTML that is **not** wrapped will be parsed by Vue.
+The XML wrapped by `<code>` will be displayed as-is; only the XML that is **not** wrapped will be parsed by Vue.
 
 ::: tip
-The output HTML is accomplished by [Markdown-it](https://github.com/Markdown-it/Markdown-it), while the parsed headers are handled by VitePress (and used for both the sidebar and document title).
+The output XML is accomplished by [Markdown-it](https://github.com/Markdown-it/Markdown-it), while the parsed headers are handled by VitePress (and used for both the sidebar and document title).
 :::
 
 
@@ -224,7 +224,7 @@ Then you can use the following in Markdown and theme components:
 
 ## Using Teleports
 
-VitePress currently has SSG support for teleports to body only. For other targets, you can wrap them inside the built-in `<ClientOnly>` component or inject the teleport markup into the correct location in your final page HTML through [`postRender` hook](../reference/site-config#postrender).
+VitePress currently has SSG support for teleports to body only. For other targets, you can wrap them inside the built-in `<ClientOnly>` component or inject the teleport markup into the correct location in your final page XML through [`postRender` hook](../reference/site-config#postrender).
 
 <ModalDemo />
 
